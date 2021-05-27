@@ -1,6 +1,6 @@
-#Web Ping
+Web Ping
 
-#Aplikacja internetowa do testowania połączenia z adresami zapisanymi w bazie danych SQL
+Aplikacja internetowa do testowania połączenia z adresami zapisanymi w bazie danych SQL
 
 
 
