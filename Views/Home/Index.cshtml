@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Połączenie z kasami";
+    string[] TableHeaders = new string[] { "Nazwa", "Adres", "Status połączenia", "Średni czas połączenia" };
+    Console.WriteLine("Załadowano plik HTML");
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<div id="pageloaddiv">
+    <br /><br /><br />
+    <p id="zaladowano"></p>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#pageloaddiv').hide();
+    });
+</script>
+
+
+
+<div id="sql" class="text-center">
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                @{ foreach (var head in TableHeaders)
+                    {
+                        Console.WriteLine("Załadowano nagłówki");
+                    <th>
+                        @head
+                    </th>
+                    } }
+            </tr>
+        </thead>
+        @{ if (Model != null)
+            {
+                foreach (var Data in Model)
+                {
+
+
+            <tr>
+                <td>@Data.Nazwa</td>
+                <td>@Data.Adres </td>
+                <td bgcolor="@Data.Kolor"></td>
+                <td>@Data.Ping</td>
+
+            </tr>
+                }
+            } }
+    </table>
+
+    <h5>
+        <a id="pingowanie" asp-action="ladowanie" >Sprawdź połączenie z kasami</a>
+    </h5>
+    <script>
+
+        $("#pingowanie").click(function () {
+             $('#pageloaddiv').show();            
+            $("#zaladowano").text("Proszę czekać..(może potrwać kilka minut)");
+            
+
+           
+        });
+        
+    </script>
+    
+
+</div>
+
